@@ -1,0 +1,154 @@
+# Get Customer Information
+  This is the api documentation for the customer information.
+
+## Create an customer
+```shell
+curl --location --request POST 'http://localhost:8091/data/v1/progressive/start' \
+--header 'Authorization: asdfghjkl...' \
+--data-raw '{
+    "firstName": "Joe",
+    "lastName": "Emison",
+    "city": "Brooklyn",
+    "state": "NY",
+    "zip": "12344-56767",
+    "address1": "1920 Edgemont Rd",
+    "dateOfBirth": "02/13/1990",
+    "email": "test@heykangaroo.com",
+    "phone": "+1-202-460-3525",
+    "isPremiumSubscriber": true,
+    "connectedHome": {
+        "moisture": "1",
+        "theft": "6",
+        "smoke": "2",
+        "motion": "1",
+        "waterShutoff": "0"
+    }
+}'
+```
+```ruby
+  require "uri"
+  require "json"
+  require "net/http"
+
+  url = URI("http://localhost:8091/data/v1/progressive/start")
+
+  http = Net::HTTP.new(url.host, url.port);
+  request = Net::HTTP::Post.new(url)
+  request["Authorization"] = "asdfghjkl..."
+  request.body = JSON.dump({
+    "firstName": "Joe",
+    "lastName": "Emison",
+    "city": "Brooklyn",
+    "state": "NY",
+    "zip": "12344-56767",
+    "address1": "1920 Edgemont Rd",
+    "dateOfBirth": "02/13/1990",
+    "email": "test@heykangaroo.com",
+    "phone": "+1-202-460-3525",
+    "isPremiumSubscriber": true,
+    "connectedHome": {
+      "moisture": "1",
+      "theft": "6",
+      "smoke": "2",
+      "motion": "1",
+      "waterShutoff": "0"
+    }
+  })
+
+  response = http.request(request)
+  puts response.read_body
+
+```
+
+```javascript
+  var axios = require('axios');
+  var data = JSON.stringify({
+    "firstName": "Joe",
+    "lastName": "Emison",
+    "city": "Brooklyn",
+    "state": "NY",
+    "zip": "12344-56767",
+    "address1": "1920 Edgemont Rd",
+    "dateOfBirth": "02/13/1990",
+    "email": "test@heykangaroo.com",
+    "phone": "+1-202-460-3525",
+    "isPremiumSubscriber": true,
+    "connectedHome": {
+      "moisture": "1",
+      "theft": "6",
+      "smoke": "2",
+      "motion": "1",
+      "waterShutoff": "0"
+    }
+  });
+
+  var config = {
+    method: 'post',
+    url: 'http://localhost:8091/data/v1/progressive/start',
+    headers: {
+      'Authorization': 'asdfghjkl...',
+    },
+    data : data
+  };
+
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "message" : "success"
+}
+```
+
+### Request Information
+|Category|Value|
+|-------|-------|
+|Http request| `POST`|
+|URL|/v1/customers|
+
+### Headers
+Authorization: asdfghjkl...
+
+## Retrieve a customer
+
+### Request Information
+|Category|Value|
+|-------|-------|
+|Http request| `GET`|
+|URL|/v1/customers/{customer_ID}|
+
+### Headers
+Authorization: asdfghjkl...
+
+
+## Update a customer
+
+### Request Information
+|Category|Value|
+|-------|-------|
+|Http request| `PATCH`|
+|URL|/v1/customers/{customer_ID}|
+
+### Headers
+Authorization: asdfghjkl...
+
+
+## Delete a customer
+
+### Request Information
+|Category|Value|
+|-------|-------|
+|Http request| `DELETE`|
+|URL|/v1/customers/{customer_ID}|
+
+### Headers
+Authorization: asdfghjkl...
